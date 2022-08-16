@@ -244,3 +244,40 @@ li {
     transform: translateY(0);
   }
 }
+
+.categories{
+
+display: grid;
+grid-template-columns: repeat(2,1fr);
+text-align: center;
+gap: 10px;
+position: relative;
+top: 800px;
+
+}
+
+.categories h1{
+  font-size: 18px;
+}
+
+.categories h2{
+  font-size: 14px;
+}
+
+
+
+.categories div{
+ 
+  border-right: black solid 1px;
+margin-bottom: 2px;
+width: 140px;
+
+
+}
+
+
+
+.categories .div-izq{
+position: relative;
+left: 30px;
+}
