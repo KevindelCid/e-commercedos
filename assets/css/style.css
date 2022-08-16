@@ -117,6 +117,59 @@ li {
   position: absolute;
 }
 
+.contenedor-elements {
+  width: 100%;
+  height: 100%;
+  background-color: var(--container-color);
+}
+
+.contenedor-elements--h3 {
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  
+}
+
+.contenedor-elements--img{
+  width: 100%;
+}
+
+.contenedor-elements--h2, .contenedor-elements--p {
+  width: 100%;
+  text-align: center;
+}
+
+.contenedor-elements--containerh4 {
+  width: 100%;
+  display: flex;
+  padding-top: 150px;
+  padding-bottom: 30px;
+  
+}
+
+.contenedor-elements--h4 {
+  width: 50%;
+  padding-left: 30px;
+}
+
+.contenedor-elements--h4--2 {
+  width: 50%;
+  text-align: end;
+  padding-right: 30px;
+  
+}
+
+.contenedor-elements--button {
+  width: 45%;
+  height: 8%;
+  margin-left: 50%;
+  border: none;
+  color: rgb(94, 94, 94);
+
+}
+
+
 @keyframes aparecer-elementos-nav {
   0% {
     left: -100%;
