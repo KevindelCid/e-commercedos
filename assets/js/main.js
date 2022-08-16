@@ -63,21 +63,28 @@ themeButton.addEventListener("click", () => {
 
 const articuloDestacado = () => {
   const articulo = items[1];
-  const articuloContainer = document.getElementById("articulo-destacado-back");
-  articuloContainer.innerHTML = `  <div class="back" > <img class="img-articulo-destacado" src=${articulo.image}></div>
-        
-  <div class="description-item-destacado">
-      <h2>New Sweatshirt</h2>
-      <h1>COLLECTIONS 2022</h1>
-      <p>Lastest arrival of the new Hanes Midweight
-           <br>  Crewneck sweatshirt imported from the 2022 series, with a modern design.
-      </p>
-      <span class="price price-destacado">$${articulo.price}.00</span>
-      <div class="btn-destacado-container">
-      <button class="btn btn-secondary">Discover</button>
-      <button class="btn btn-primary">ADD TO CART</button>
-      </div>
-  </div>`;
+  const articuloContainer = document.getElementById("articulo-destacado-img");
+  articuloContainer.innerHTML = `  
+  <div class="back" ></div> 
+  
+  <img class="img-articulo-destacado" src=${articulo.image}>
+
+  `;
+  const articuloDescripcion = document.getElementById("descripcion-destacado");
+  articuloDescripcion.innerHTML = `
+
+<div class="description-item-destacado">
+<h2>New Sweatshirt</h2>
+<h1>COLLECTIONS 2022</h1>
+<p>Lastest arrival of the new Hanes Midweight
+     <br>  Crewneck sweatshirt imported from the 2022 series, with a modern design.
+</p>
+<span class="price price-destacado">$${articulo.price}.00</span>
+<div class="btn-destacado-container">
+<button class="btn btn-secondary">Discover</button>
+<button class="btn btn-primary">ADD TO CART</button>
+</div>
+`;
 };
 
 const menu = document.getElementById("nav-toggle");

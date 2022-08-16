@@ -204,11 +204,20 @@ li {
 .back {
   background-color: var(--first-color);
   width: 70%;
-  height: 400px;
+  height: 100px;
   position: fixed;
-  top: 0;
+  top: 0px;
   z-index: -1;
   right: 0;
+}
+.articulo-section {
+  width: 70%;
+  display: flex;
+  right: 0;
+  position: absolute;
+  right: 0;
+  height: 350px;
+  background-color: var(--first-color);
 }
 .img-articulo-destacado {
   width: 250px;
