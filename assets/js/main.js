@@ -80,14 +80,35 @@ const articuloDestacado = () => {
   </div>`;
 };
 
-document.getElementById("nav-toggle").addEventListener("click", (e) => {
+const menu = document.getElementById("nav-toggle");
+const elementoMenu = document.getElementById("elemento-menu");
+const elementoCart = document.getElementById("elemento-cart");
+const cart = document.getElementById("cart-shop");
+const cartOut = document.getElementById("cart");
+
+menu.addEventListener("click", (e) => {
   displayMenu();
-  this.textContent = "X";
 });
+
+cart.addEventListener("click", (e) => displayCart());
+cartOut.addEventListener("click", (e) => displayCart());
 
 function displayMenu() {
   const elementos = document.getElementById("elementos");
+  elementos.classList.contains("no-display")
+    ? elementoMenu.classList.replace("bx-grid-alt", "bx-chevrons-right")
+    : elementoMenu.classList.replace("bx-chevrons-right", "bx-grid-alt");
+
   elementos.classList.toggle("no-display");
+}
+
+function displayCart() {
+  const cart = document.getElementById("cart");
+  cart.classList.contains("no-display")
+    ? elementoCart.classList.replace("bx-shopping-bag", "bx-chevrons-right")
+    : elementoCart.classList.replace("bx-chevrons-right", "bx-shopping-bag");
+
+  cart.classList.toggle("no-display");
 }
 
 ////////////////
