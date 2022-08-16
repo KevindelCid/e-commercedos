@@ -204,7 +204,7 @@ li {
 .back {
   background-color: var(--first-color);
   width: 70%;
-  height: 100px;
+  height: 3.5rem;
   position: fixed;
   top: 0px;
   z-index: -1;
@@ -234,12 +234,19 @@ li {
   width: 2.5rem;
   fill: var(--first-color);
 }
+.nav-container{
+
+  position: fixed;
+  width: 100%;
+  z-index: 40;
+}
 .nav {
   height: 3.5rem;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
   z-index: 100;
+ 
 }
 
 @keyframes load {
