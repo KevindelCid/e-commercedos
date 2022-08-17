@@ -59,7 +59,9 @@ function load() {
 }
 
 function cargarDatos() {
-  cartCounter.textContent = localStorage.getItem("countCart");
+  localStorage.getItem("countCart") !== null ? 
+  cartCounter.textContent = localStorage.getItem("countCart")
+  : cartCounter.textContent = 0;
   if (parseInt(cartCounter.textContent) > 0)
     cartContainer.classList.remove("is-empty");
 }
