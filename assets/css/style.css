@@ -131,7 +131,7 @@ li {
 }
 
 .contenedor-elements--img {
-  width: 100%;
+  width: 90%;
 }
 
 .contenedor-elements--h2,
@@ -448,4 +448,18 @@ li {
   text-align: center;
   font-size: 15px;
   color: grey;
+}
+
+.is-empty {
+}
+
+.img-into-cart {
+  width: 80px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 40px;
 }

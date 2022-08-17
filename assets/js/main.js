@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   load();
   articulosLoader(items);
+  cargarDatos();
   // showProducts( items )
 });
 
@@ -55,6 +56,12 @@ function load() {
   setTimeout(() => {
     loader.classList.add("hide");
   }, 1500);
+}
+
+function cargarDatos() {
+  cartCounter.textContent = localStorage.getItem("countCart");
+  if (parseInt(cartCounter.textContent) > 0)
+    cartContainer.classList.remove("is-empty");
 }
 
 /* =========== Articulos a la venta ==========*/
@@ -103,6 +110,7 @@ const cart = document.getElementById("cart-shop");
 const cartOut = document.getElementById("cart");
 const articulos = document.getElementById("articulos");
 const carrito = [];
+const cartCounter = document.getElementById("cart-counter");
 
 menu.addEventListener("click", (e) => {
   displayMenu();
@@ -117,7 +125,7 @@ function carritoLoader() {}
 
 function cartFunctionality() {
   const btns = document.querySelectorAll(".card-add-cart"); //NodeList
-  const cartCounter = document.getElementById("cart-counter");
+
   console.log(btns);
 
   //Arreglo con todos los botones
@@ -131,6 +139,9 @@ function cartFunctionality() {
       localStorage.setItem("carrito", JSON.stringify(cart));
       localStorage.setItem("countCart", cart.length);
       cartCounter.textContent = cart.length;
+      if (parseInt(cartCounter.textContent) > 0) {
+        cartContainer.classList.remove("is-empty");
+      }
     });
   });
 }
@@ -144,13 +155,45 @@ function displayMenu() {
   elementos.classList.toggle("no-display");
 }
 
+const cartContainer = document.getElementById("items-cart");
+
 function displayCart() {
   const cart = document.getElementById("cart");
+  let emptyHtml = ` <img class="contenedor-elements--img" src="./assets/images/empty-cart.png" alt="cart">
+  <h2 class="contenedor-elements--h2">Your cart is empty</h2>
+  <p class="contenedor-elements--p">You can add items to your cart by clicking on the ´+´ button on                the product page.</p> `;
   cart.classList.contains("no-display")
     ? elementoCart.classList.replace("bx-shopping-bag", "bx-chevrons-right")
     : elementoCart.classList.replace("bx-chevrons-right", "bx-shopping-bag");
 
   cart.classList.toggle("no-display");
+  if (cartContainer.classList.contains("is-empty")) {
+    cartContainer.innerHTML = emptyHtml;
+  } else {
+    emptyHtml = "";
+    JSON.parse(localStorage.getItem("carrito")).map((item) => {
+      emptyHtml += `<div class="item">
+      <img class="img-into-cart" src=${item.image} alt="">
+      <div>
+        <h2>${item.name}</h2>
+        <p>Stock: ${item.quantity} <span>$${item.price}.00</span></p>
+        <h3>Subtotal: $24.00</h3>
+        <div class="controls">
+          <button type="button">-</button>
+        <small>1 Units</small>
+        <button type="button">+</button>
+        </div>
+       
+      </div>
+      <a href="#">V</a>
+        
+
+      
+    </div>`;
+    });
+
+    cartContainer.innerHTML = emptyHtml;
+  }
 }
 
 ////////////////
