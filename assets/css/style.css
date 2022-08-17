@@ -486,4 +486,32 @@ li {
     justify-content: center;
     padding: 40px 20px;
   }
+
+}
+@media only screen and (min-width: 1150px) {
+  
+
+ .destacado-container-img{
+  width: 30%;
+  margin-right: 15%;
+  margin-left: 60px;
+  height: 593px;
+}
+.img-articulo-destacado{
+  width: 350px;
+}
+.destacado>.datos{
+  padding: 120px 10%;
+}
+.articulos{
+ 
+  justify-content: space-around;
+
+}
+.categories{
+ 
+  justify-content: space-evenly;
+  
+}
+
 }
