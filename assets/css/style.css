@@ -35,12 +35,17 @@ body.dark-theme {
   --body-color: hsl(249, 19%, 14%);
   --container-color: hsl(246, 16%, 12%);
   --border-color: hsl(0, 0%, 20%);
+
 }
+
 
 body {
   background-color: var(--body-color);
   font-family: var(--body-font);
   color: var(--title-color);
+
+
+
 }
 a {
   text-decoration: none;
@@ -280,4 +285,43 @@ li {
 .categories .div-izq {
   position: relative;
   left: 30px;
+}
+
+.footer__social-link img{
+  width: 18px;
+  height: 18px;
+  margin: 5px;
+}
+
+.footer-info{
+  background-color: hsl(0, 0%, 90%);
+ position: relative;
+ top: 1000px;
+
+}
+
+.contenedor-footer{
+  display: grid;
+  row-gap: 2rem;
+  padding: 2rem;
+ padding-top: 100px;
+}
+
+.contenedor-footer h1{
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+
+.contenedor-footer h2{
+  font-size: 16px;
+  color: gray;
+  padding-top: 16px;
+}
+.marca {
+  display: block;
+
+  margin: 3.5rem 0 1rem 0;
+  text-align: center;
+  font-size: 15px;
+  color:grey
 }
