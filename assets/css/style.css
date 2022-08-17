@@ -223,7 +223,7 @@ li {
 .btn-primary {
   padding: 15px 20px;
   background-color: var(--button-color);
-  color: var(--container-color);
+  color: var(--text-color);
   font-weight: bold;
   box-shadow: 1px 18px 39px -13px rgba(0, 0, 0, 0.63);
   -webkit-box-shadow: 1px 18px 39px -13px rgba(0, 0, 0, 0.63);
@@ -288,6 +288,15 @@ li {
   width: 100%;
   z-index: 40;
 }
+.scrolling {
+  background-color: var(--container-color);
+  box-shadow: -1px 9px 28px -15px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 9px 28px -15px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 9px 28px -15px rgba(0, 0, 0, 0.75);
+}
+.no-scrolling {
+  background-color: transparent;
+}
 .nav {
   height: 3.5rem;
   display: flex;
@@ -351,6 +360,7 @@ li {
 }
 .datos > p {
   padding-top: 15px;
+  padding-bottom: 20px;
 }
 
 .articulos {

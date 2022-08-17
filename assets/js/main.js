@@ -25,6 +25,17 @@ const items = [
   },
 ];
 
+document.addEventListener("scroll", (e) => {
+  const position = window.scrollY;
+  const navegation = document.getElementById("nav");
+
+  if (position > 20) {
+    navegation.classList.replace("no-scrolling", "scrolling");
+  } else {
+    navegation.classList.replace("scrolling", "no-scrolling");
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme") === "bx-moon") {
     themeButton.classList.replace("bx-sun", "bx-moon");
