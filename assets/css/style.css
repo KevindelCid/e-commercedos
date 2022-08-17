@@ -128,14 +128,14 @@ li {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 100px;
-  
 }
 
-.contenedor-elements--img{
+.contenedor-elements--img {
   width: 100%;
 }
 
-.contenedor-elements--h2, .contenedor-elements--p {
+.contenedor-elements--h2,
+.contenedor-elements--p {
   width: 100%;
   text-align: center;
 }
@@ -145,7 +145,6 @@ li {
   display: flex;
   padding-top: 150px;
   padding-bottom: 30px;
-  
 }
 
 .contenedor-elements--h4 {
@@ -157,7 +156,6 @@ li {
   width: 50%;
   text-align: end;
   padding-right: 30px;
-  
 }
 
 .contenedor-elements--button {
@@ -166,9 +164,7 @@ li {
   margin-left: 50%;
   border: none;
   color: rgb(94, 94, 94);
-
 }
-
 
 @keyframes aparecer-elementos-nav {
   0% {
@@ -287,8 +283,7 @@ li {
   width: 2.5rem;
   fill: var(--first-color);
 }
-.nav-container{
-
+.nav-container {
   position: fixed;
   width: 100%;
   z-index: 40;
@@ -299,7 +294,6 @@ li {
   justify-content: space-between;
   padding: 10px 20px;
   z-index: 100;
- 
 }
 
 @keyframes load {
@@ -319,8 +313,7 @@ li {
   grid-template-columns: repeat(2, 1fr);
   text-align: center;
   gap: 10px;
-  position: relative;
-  top: 800px;
+  padding-top: 40px;
 }
 
 .categories h1 {
@@ -338,6 +331,24 @@ li {
 }
 
 .categories .div-izq {
-  position: relative;
   left: 30px;
+}
+
+.destacado-container-img {
+  background-color: var(--first-color);
+  width: 70%;
+  float: right;
+}
+.pin {
+  visibility: hidden;
+}
+
+.destacado > .datos {
+  padding: 0 20px;
+}
+.datos > h2 {
+  padding-top: 15px;
+}
+.datos > p {
+  padding-top: 15px;
 }
