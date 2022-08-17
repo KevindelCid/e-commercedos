@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     themeButton.classList.replace("bx-moon", "bx-sun");
   }
   load();
-  articuloDestacado();
+  articulosLoader(items);
   // showProducts( items )
 });
 
@@ -44,6 +44,29 @@ function load() {
   setTimeout(() => {
     loader.classList.add("hide");
   }, 1500);
+}
+
+/* =========== Articulos a la venta ==========*/
+
+function articulosLoader(arr) {
+  let htmlText = ``;
+  arr.map((item) => {
+    htmlText += `
+    <div class="card">
+    <div class="card-add-cart">
+      <span>+</span>
+    </div>
+<div class="card-img">
+  <img class="img-card" src=${item.image} alt="">
+
+</div>
+    <div  class="description-card">
+      <p><h2>$${item.price}.00</h2> | Stock: ${item.quantity} <br><span>Hoodies</span></p>
+    </div>
+  </div>
+  `;
+  });
+  articulos.innerHTML = htmlText;
 }
 
 /* =========DARK MODE======== */
@@ -61,37 +84,12 @@ themeButton.addEventListener("click", () => {
   }
 });
 
-const articuloDestacado = () => {
-  const articulo = items[1];
-  const articuloContainer = document.getElementById("articulo-destacado-img");
-  articuloContainer.innerHTML = `  
-  <div class="back" ></div> 
-  
-  <img class="img-articulo-destacado" src=${articulo.image}>
-
-  `;
-  const articuloDescripcion = document.getElementById("descripcion-destacado");
-  articuloDescripcion.innerHTML = `
-
-<div class="description-item-destacado">
-<h2>New Sweatshirt</h2>
-<h1>COLLECTIONS 2022</h1>
-<p>Lastest arrival of the new Hanes Midweight
-     <br>  Crewneck sweatshirt imported from the 2022 series, with a modern design.
-</p>
-<span class="price price-destacado">$${articulo.price}.00</span>
-<div class="btn-destacado-container">
-<button class="btn btn-secondary">Discover</button>
-<button class="btn btn-primary">ADD TO CART</button>
-</div>
-`;
-};
-
 const menu = document.getElementById("nav-toggle");
 const elementoMenu = document.getElementById("elemento-menu");
 const elementoCart = document.getElementById("elemento-cart");
 const cart = document.getElementById("cart-shop");
 const cartOut = document.getElementById("cart");
+const articulos = document.getElementById("articulos");
 
 menu.addEventListener("click", (e) => {
   displayMenu();

@@ -352,3 +352,53 @@ li {
 .datos > p {
   padding-top: 15px;
 }
+
+.articulos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 40px;
+  gap: 40px;
+}
+
+.img-card {
+  width: 150px;
+}
+.card-img {
+  background-color: var(--card-color);
+  border-radius: 0.5rem;
+  padding: 20px 40px;
+}
+.description-card {
+  background-color: var(--container-color);
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.card-add-cart {
+  width: 50px;
+  height: 50px;
+  background-color: var(--container-color);
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 160px;
+  box-shadow: -1px 9px 28px -5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 9px 28px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 9px 28px -5px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+.card-add-cart > span {
+  position: absolute;
+  margin: 15px 19px;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.card {
+  position: relative;
+  box-shadow: -1px 9px 28px -15px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 9px 28px -15px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 9px 28px -15px rgba(0, 0, 0, 0.75);
+}
