@@ -107,7 +107,13 @@ menu.addEventListener("click", (e) => {
 });
 
 cart.addEventListener("click", (e) => displayCart());
-cartOut.addEventListener("click", (e) => displayCart());
+// cartOut.addEventListener("click", (e) => displayCart());
+
+/* ========= carrito ==========*/
+
+function carritoLoader() {
+  localStorage.getItem("");
+}
 
 function displayMenu() {
   const elementos = document.getElementById("elementos");
