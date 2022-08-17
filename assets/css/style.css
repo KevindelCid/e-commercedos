@@ -463,3 +463,27 @@ li {
   align-items: center;
   margin-bottom: 40px;
 }
+
+/* version de tablet */
+@media only screen and (min-width: 800px) {
+  
+  .destacado-container-img{
+    width: 35%;
+    margin-right: 5%;
+    margin-left: 60px;
+    height: 493px;
+  }
+  .destacado>.datos{
+    padding: 90px 45px;
+  }
+  .categories{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .articulos{
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+}
