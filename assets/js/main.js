@@ -66,13 +66,10 @@ function cargarDatos() {
 if(cartCounter.textContent === "") cartCounter.textContent = 0
 
     if(localStorage.getItem("carrito") !== "") {
-      alert("el puto carro no esta vacio")
+   
       cartItems = JSON.parse(localStorage.getItem("carrito"))
      }
-      else{
-        alert("el puto carro  esta vacio")
-        
-      }
+     
 
 
 }
