@@ -63,7 +63,7 @@ function articulosLoader(arr) {
   let htmlText = ``;
   arr.map((item) => {
     htmlText += `
-    <div class="card">
+    <div class="card"  id=${item.id}>
     <div class="card-add-cart">
       <span>+</span>
     </div>
@@ -78,6 +78,7 @@ function articulosLoader(arr) {
   `;
   });
   articulos.innerHTML = htmlText;
+  cartFunctionality();
 }
 
 /* =========DARK MODE======== */
@@ -101,6 +102,7 @@ const elementoCart = document.getElementById("elemento-cart");
 const cart = document.getElementById("cart-shop");
 const cartOut = document.getElementById("cart");
 const articulos = document.getElementById("articulos");
+const carrito = [];
 
 menu.addEventListener("click", (e) => {
   displayMenu();
@@ -111,8 +113,26 @@ cart.addEventListener("click", (e) => displayCart());
 
 /* ========= carrito ==========*/
 
-function carritoLoader() {
-  localStorage.getItem("");
+function carritoLoader() {}
+
+function cartFunctionality() {
+  const btns = document.querySelectorAll(".card-add-cart"); //NodeList
+  const cartCounter = document.getElementById("cart-counter");
+  console.log(btns);
+
+  //Arreglo con todos los botones
+  const cart = [];
+
+  btns.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const id = parseInt(button.parentElement.id);
+      const selectedProduct = items.find((item) => item.id === id);
+      cart.push(selectedProduct);
+      localStorage.setItem("carrito", JSON.stringify(cart));
+      localStorage.setItem("countCart", cart.length);
+      cartCounter.textContent = cart.length;
+    });
+  });
 }
 
 function displayMenu() {

@@ -431,12 +431,12 @@ li {
   padding-top: 100px;
 }
 
-.contenedor-footer h1 {
+.contenedor-footer h2 {
   font-size: 22px;
   padding-bottom: 10px;
 }
 
-.contenedor-footer h2 {
+.contenedor-footer h3 {
   font-size: 16px;
   color: gray;
   padding-top: 16px;
