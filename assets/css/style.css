@@ -429,7 +429,8 @@ li {
 }
 
 .contenedor-footer {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   row-gap: 2rem;
   padding: 2rem;
   padding-top: 100px;
@@ -490,6 +491,16 @@ li {
     justify-content: center;
     padding: 40px 20px;
   }
+
+
+  
+  .contenedor-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+  }
+
 
 }
 @media only screen and (min-width: 1150px) {
