@@ -335,8 +335,12 @@ li {
 
 .categories div {
   border-right: black solid 1px;
-  margin-bottom: 2px;
+  margin-bottom: 2rem;
+  margin-top: 10rem;
   width: 140px;
+  color: var(--text-color-light);
+  
+
 }
 
 .categories .div-izq {
