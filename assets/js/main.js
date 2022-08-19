@@ -63,15 +63,11 @@ function cargarDatos() {
   if (parseInt(cartCounter.textContent) > 0)
     cartContainer.classList.remove("is-empty");
 
-if(cartCounter.textContent === "") cartCounter.textContent = 0
+  if (cartCounter.textContent === "") cartCounter.textContent = 0;
 
-    if(localStorage.getItem("carrito") !== "") {
-   
-      cartItems = JSON.parse(localStorage.getItem("carrito"))
-     }
-     
-
-
+  if (localStorage.getItem("carrito") !== "") {
+    cartItems = JSON.parse(localStorage.getItem("carrito"));
+  }
 }
 
 /* =========== Articulos a la venta ==========*/
@@ -121,8 +117,7 @@ const cartOut = document.getElementById("cart");
 const articulos = document.getElementById("articulos");
 const carrito = [];
 const cartCounter = document.getElementById("cart-counter");
-let cartItems = []
-
+let cartItems = [];
 
 menu.addEventListener("click", (e) => {
   displayMenu();
@@ -140,15 +135,11 @@ function cartFunctionality() {
 
   console.log(btns);
 
-
   //Arreglo con todos los botones
- 
-
-
 
   btns.forEach((button) => {
     button.addEventListener("click", (e) => {
-      const id = parseInt(button.parentElement.id);
+      const id = parseInt(e.target.parentElement.id);
       const selectedProduct = items.find((item) => item.id === id);
       cartItems.push(selectedProduct);
       localStorage.setItem("carrito", JSON.stringify(cartItems));
