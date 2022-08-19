@@ -139,8 +139,17 @@ function cartFunctionality() {
 
   btns.forEach((button) => {
     button.addEventListener("click", (e) => {
-      const id = parseInt(e.target.parentElement.id);
+      console.log(button.parentElement.id);
+      const id = parseInt(button.parentElement.id);
       const selectedProduct = items.find((item) => item.id === id);
+
+      if (localStorage.getItem("carrito") !== null) {
+        cartItems = JSON.parse(localStorage.getItem("carrito"));
+      } else {
+        cartItems = [];
+      }
+
+      console.log(cartItems);
       cartItems.push(selectedProduct);
       localStorage.setItem("carrito", JSON.stringify(cartItems));
       localStorage.setItem("countCart", cartItems.length);
