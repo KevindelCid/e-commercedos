@@ -1,3 +1,15 @@
+
+
+/* ================= Variables y Constantes Globales ================= */
+const menu = document.getElementById("nav-toggle");
+const elementoMenu = document.getElementById("elemento-menu");
+const elementoCart = document.getElementById("elemento-cart");
+const cart = document.getElementById("cart-shop");
+const cartOut = document.getElementById("cart");
+const articulos = document.getElementById("articulos");
+const carrito = [];
+const cartCounter = document.getElementById("cart-counter");
+let cartItems = [];
 const items = [
   {
     id: 1,
@@ -25,6 +37,11 @@ const items = [
   },
 ];
 
+
+/* ================  UX Functions ============== */
+
+/* === Al hacer scroll aparece fondo blanco en la nav === */
+
 document.addEventListener("scroll", (e) => {
   const position = window.scrollY;
   const navegation = document.getElementById("nav");
@@ -35,6 +52,33 @@ document.addEventListener("scroll", (e) => {
     navegation.classList.replace("scrolling", "no-scrolling");
   }
 });
+
+/* =========DARK MODE======== */
+const themeButton = document.getElementById("theme-button");
+
+themeButton.addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
+
+  if (themeButton.classList.contains("bx-moon")) {
+    themeButton.classList.replace("bx-moon", "bx-sun");
+    localStorage.setItem("theme", "bx-sun");
+  } else {
+    themeButton.classList.replace("bx-sun", "bx-moon");
+    localStorage.setItem("theme", "bx-moon");
+  }
+});
+
+
+/* =========== LOADER ========== */
+
+const loader = document.getElementById("loader");
+function load() {
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 1500);
+}
+
+/* ======== Al cargar el DOMContentLoaded =========== */
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme") === "bx-moon") {
@@ -50,13 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // showProducts( items )
 });
 
-/* =========== LOADER ========== */
-const loader = document.getElementById("loader");
-function load() {
-  setTimeout(() => {
-    loader.classList.add("hide");
-  }, 1500);
-}
+
 
 function cargarDatos() {
   cartCounter.textContent = localStorage.getItem("countCart");
@@ -92,54 +130,64 @@ function articulosLoader(arr) {
   });
   articulos.innerHTML = htmlText;
   cartFunctionality();
+
+
+
+
+
+
+
+
+
+
 }
 
-/* =========DARK MODE======== */
-const themeButton = document.getElementById("theme-button");
 
-themeButton.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme");
 
-  if (themeButton.classList.contains("bx-moon")) {
-    themeButton.classList.replace("bx-moon", "bx-sun");
-    localStorage.setItem("theme", "bx-sun");
-  } else {
-    themeButton.classList.replace("bx-sun", "bx-moon");
-    localStorage.setItem("theme", "bx-moon");
-  }
-});
 
-const menu = document.getElementById("nav-toggle");
-const elementoMenu = document.getElementById("elemento-menu");
-const elementoCart = document.getElementById("elemento-cart");
-const cart = document.getElementById("cart-shop");
-const cartOut = document.getElementById("cart");
-const articulos = document.getElementById("articulos");
-const carrito = [];
-const cartCounter = document.getElementById("cart-counter");
-let cartItems = [];
 
-menu.addEventListener("click", (e) => {
+menu.addEventListener("click", () => {
   displayMenu();
 });
 
-cart.addEventListener("click", (e) => displayCart());
+cart.addEventListener("click", () => displayCart());
 // cartOut.addEventListener("click", (e) => displayCart());
 
 /* ========= carrito ==========*/
 
-function carritoLoader() {}
+
+function apilaritemsCarrito(articulos) {
+
+  const resultado = []
+
+
+  items.forEach(producto => {
+
+
+    producto.count = articulos.filter(articulo => articulo.id === producto.id).length
+    resultado.push(producto)
+
+  })
+  return resultado.filter(item => item.count > 0)
+
+
+
+}
+
+
+
+
+
+
+
 
 function cartFunctionality() {
+  //Arreglo con todos los botones
   const btns = document.querySelectorAll(".card-add-cart"); //NodeList
 
-  console.log(btns);
-
-  //Arreglo con todos los botones
-
   btns.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      console.log(button.parentElement.id);
+    button.addEventListener("click", () => {
+
       const id = parseInt(button.parentElement.id);
       const selectedProduct = items.find((item) => item.id === id);
 
@@ -148,9 +196,23 @@ function cartFunctionality() {
       } else {
         cartItems = [];
       }
+      /* ====== instrucción despliegue de items apilados
+      // hasta este punto la variable cartItems contiene todos los elementos que hay en el carrito
+      // entonces aqui vamos a crear una fucion que retorne un array con los elementos pero sin repetirlos, unicamente con su contador
+      */
 
-      console.log(cartItems);
+
+
+
+
       cartItems.push(selectedProduct);
+
+
+
+      cartItems = apilaritemsCarrito(cartItems);
+
+
+
       localStorage.setItem("carrito", JSON.stringify(cartItems));
       localStorage.setItem("countCart", cartItems.length);
       cartCounter.textContent = cartItems.length;
@@ -189,14 +251,14 @@ function displayCart() {
     JSON.parse(localStorage.getItem("carrito")).map((item) => {
       emptyHtml += `<div class="item">
       <img class="img-into-cart" src=${item.image} alt="">
-      <div>
+      <div >
         <h2>${item.name}</h2>
         <p>Stock: ${item.quantity} <span>$${item.price}.00</span></p>
         <h3>Subtotal: $24.00</h3>
         <div class="controls">
-          <button type="button">-</button>
-        <small>1 Units</small>
-        <button type="button">+</button>
+          <button type="button" class="countBtnResta" id=${item.id}  >-</button>
+        <small id="counterArticle">${item.count} Units</small>
+        <button type="button" class="countBtnSuma" >+</button>
         </div>
        
       </div>
@@ -209,7 +271,60 @@ function displayCart() {
 
     cartContainer.innerHTML = emptyHtml;
   }
+
+
+  const btnsCount = document.querySelectorAll(".countBtnResta"); //NodeList
+
+  btnsCount.forEach((button) => {
+      button.addEventListener("click", (e) => {
+      
+
+
+        console.log(button.id)
+        const id = parseInt(button.id);
+      
+    const carrito = JSON.parse(localStorage.getItem("carrito"))
+  
+        carrito.map((articulo, index) => {
+          if(articulo.id === id){
+            carrito[index].count --;
+            
+          }
+         })
+         localStorage.setItem("carrito", JSON.stringify(carrito))
+  
+      })
+    })
+
+
+
+
+
 }
+
+
+
+
+
+
+
+function restar(item){
+
+ const carrito = JSON.parse(localStorage.getItem("carrito"))
+ carrito.map((articulo, index) => {
+  if(articulo.id === item){
+    carrito[index].count --;
+    console.log(carrito)
+  }
+ })
+ localStorage.setItem("carrito", JSON.stringify(carrito))
+//  const counter = getElementById('counterArticle')
+//  counter.textContent =
+
+}
+
+
+
 
 ////////////////
 
